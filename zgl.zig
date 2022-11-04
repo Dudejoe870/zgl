@@ -1329,6 +1329,19 @@ pub fn stencilOp(sfail: StencilOp, dpfail: StencilOp, dppass: StencilOp) void {
     checkError();
 }
 
+pub const BlendMode = enum(types.Enum) {
+    func_add = binding.FUNC_ADD,
+    func_subtract = binding.FUNC_SUBTRACT,
+    func_reverse_subtract = binding.FUNC_REVERSE_SUBTRACT,
+    min = binding.MIN,
+    max = binding.MAX,
+};
+
+pub fn blendEquation(mode: BlendMode) void {
+    binding.blendEquation(@enumToInt(mode));
+    checkError();
+}
+
 pub const BlendFactor = enum(types.Enum) {
     zero = binding.ZERO,
     one = binding.ONE,
