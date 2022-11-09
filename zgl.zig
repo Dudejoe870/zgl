@@ -503,6 +503,11 @@ pub fn bindBuffer(buf: types.Buffer, target: BufferTarget) void {
     checkError();
 }
 
+pub fn bindBufferBase(buf: types.Buffer, target: BufferTarget, index: u32) void {
+    binding.bindBufferBase(@enumToInt(target), index, @enumToInt(buf));
+    checkError();
+}
+
 pub fn deleteBuffers(items: []const types.Buffer) void {
     binding.deleteBuffers(cs2gl(items.len), @ptrCast([*]const types.UInt, items.ptr));
 }
